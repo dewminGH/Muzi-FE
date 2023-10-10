@@ -16,6 +16,10 @@
 [using-yarn] :`yarn start`
 [using-npm] :`npm start`
 
+# env set up [use-sample-env]
+
+`.env.sample rename as .env add value`
+
 # husky Script
 
 `husky install`

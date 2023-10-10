@@ -3,27 +3,44 @@ import TextField from "@mui/material/TextField";
 import { IStyledInput } from "./types/interface";
 import { inputVariants } from "./types/enum";
 
-const StyledInput: React.FC<IStyledInput> = ({ type, label, onclick }) => {
+const StyledInput: React.FC<IStyledInput> = ({
+  type,
+  autoComplete,
+  label,
+  value,
+  inputRef,
+  inputProps,
+  onKeyDown,
+  onClick,
+  onChange,
+}) => {
   const styleSelector = () => {
     switch (type) {
       case inputVariants.PRIMARY:
         return styles.primaryStyle;
       case inputVariants.PASSWORD_PRIMARY:
         return styles.primaryStyle;
+      case inputVariants.SHORT_INPUT:
+        return { ...styles.primaryStyle, ...styles.shortInputStyle };
     }
   };
   return (
     <TextField
-      id="outlined-search"
+      autoComplete={autoComplete ? "on" : "off"}
       label={label}
+      value={value}
+      inputRef={inputRef}
       type={type === inputVariants.PASSWORD_PRIMARY ? "password" : "search"}
-      onClick={onclick}
+      onClick={onClick}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
       sx={{
         ...styleSelector(),
         "& input": {
           color: "#F7F8F8 !important",
         },
       }}
+      inputProps={inputProps}
     />
   );
 };

@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { containedButtonVariants } from "./types/enum";
 import { IStyledContainedButton } from "./types/interface";
 
-const StyledContainedButton: React.FC<IStyledContainedButton> = ({ text, type }) => {
+const StyledContainedButton: React.FC<IStyledContainedButton> = ({ text, type, onClick }) => {
   const styleSelector = () => {
     switch (type) {
       case containedButtonVariants.PRIMARY:
@@ -11,7 +11,7 @@ const StyledContainedButton: React.FC<IStyledContainedButton> = ({ text, type })
     }
   };
   return (
-    <Button variant="contained" sx={styleSelector()}>
+    <Button variant="contained" sx={styleSelector()} onClick={onClick}>
       {text}
     </Button>
   );
