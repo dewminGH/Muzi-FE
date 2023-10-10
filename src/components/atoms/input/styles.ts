@@ -27,3 +27,8 @@ export const primaryStyle: SxProps | object = {
     color: colors.purple,
   },
 };
+
+export const shortInputStyle: SxProps | object = {
+  width: width.shortWidthInput,
+  height: height.shortHeightInput,
+};

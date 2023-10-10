@@ -5,11 +5,13 @@ export const width = {
   primaryWidthInput: "430px",
   primaryWidthInputSm: "340px",
   primaryWidthInputXs: "calc(100vw - 40px)",
+  shortWidthInput: "50px",
 };
 
 export const height = {
   primaryHeightButton: "42px",
   primaryHeightInput: "56px",
+  shortHeightInput: "56px",
 };
 
 export const colors = {
@@ -31,6 +33,12 @@ export const fontWeight = {
   bold: 600,
   thick: 700,
   heavy: 900,
+};
+
+export const gaps = {
+  extraSmall: "4px",
+  small: "8px",
+  medium: "12px",
 };
 
 export const background = {
