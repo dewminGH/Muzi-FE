@@ -1,10 +1,27 @@
 import { SxProps } from "@mui/material";
-import { background, colors, fontSize, fontWeight } from "../../../theme";
+import { background, colors, fontSize, fontWeight, textDecorationThin } from "../../../theme";
 
 export const headerMd: SxProps = {
   color: colors.primary,
   fontSize: { sm: fontSize.sm, md: fontSize.md },
   fontWeight: fontWeight.thick,
+  display: "flex",
+  alignItems: "center",
+};
+
+export const headerSm: SxProps = {
+  color: colors.primary,
+  fontSize: { sm: fontSize.sm, md: fontSize.sm },
+  fontWeight: fontWeight.semiBold,
+  display: "flex",
+  alignItems: "center",
+};
+
+export const floatHeaderMd: SxProps = {
+  zIndex: 100,
+  fontSize: { xs: fontSize.sm, md: fontSize.md },
+  fontWeight: fontWeight.thick,
+  color: colors.primary,
   display: "flex",
   alignItems: "center",
 };
@@ -31,12 +48,5 @@ export const gradientTextMd: SxProps = {
 };
 
 export const activeText: SxProps = {
-  "&:hover": {
-    textDecoration: "underline",
-    textDecorationColor: colors.primary,
-    textDecorationThickness: "1px",
-    textUnderlineOffset: "5px",
-    textDecorationStyle: "wavy",
-    cursor: "pointer",
-  },
+  "&:hover": textDecorationThin,
 };

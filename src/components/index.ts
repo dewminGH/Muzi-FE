@@ -6,3 +6,5 @@ export { default as StyledCheckBox } from "./atoms/checkBox";
 
 /* molecules */
 export { default as StyledCheckBoxField } from "./molecules/checkBoxField";
+export { default as StyledCard } from "./molecules/card";
+export { default as StyledCarousel } from "./atoms/carousel";
