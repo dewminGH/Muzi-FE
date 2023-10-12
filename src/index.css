@@ -1,9 +1,40 @@
 .indexBody {
   margin: 0 !important;
+  font-family: "Roboto", sans-serif !important;
+  scrollbar-width: none;
 }
 
 .coverImage {
   @media (min-width: 770px) {
     max-width: 770px !important;
   }
+}
+.indexBody::-webkit-scrollbar {
+  display: none;
+}
+
+.slick-slide {
+  padding: 0 24px;
+}
+
+@media (max-width: 600px) {
+  .slick-slide {
+    padding: 0 12px;
+  }
+}
+
+.slick-dots li button:before {
+  font-size: 16px;
+  color: #ffffff;
+  border: none;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #cc53fc; /* Change the color as per your requirement */
+  border: solid 2px #ffffff;
+  border-radius: 50%;
+}
+
+.slick-dots {
+  bottom: -32px;
 }
