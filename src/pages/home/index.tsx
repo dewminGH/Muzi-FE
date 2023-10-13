@@ -4,21 +4,35 @@ import Singer from "../../assets/singer.png";
 import { Box } from "@mui/material";
 import { StyledCarousel, StyledTextField } from "../../components";
 import { textFieldVariants } from "../../components/atoms/textField/types/enum";
+import { useEffect } from "react";
+import { validateUserAuthentication } from "../../_data/localStorage";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+
+  /* access control for un-authenticate users */
+  useEffect(() => {
+    if (!validateUserAuthentication()) {
+      navigate({ pathname: "/authentication" });
+    }
+  }, []);
+
   return (
     <Box sx={styles.outerContainer}>
       {/* promotion page top content */}
       <Box sx={styles.topContainer}>
         <Box sx={styles.navContainer}>
           <TopNavigation />
-          <Box sx={styles.imageContainer}>
-            <img src={Singer} style={styles.image} alt="broken" />
-            <Box sx={styles.imageContentContainer}>
-              <StyledTextField
-                text="Make music together. Online Collaborate with anyone, from anywhere."
-                type={textFieldVariants.FLOAT_HEADER_MD}
-              />
+          <Box sx={styles.outerContainerImageBlock}>
+            <Box sx={styles.imageContainer}>
+              <img src={Singer} style={styles.image} alt="broken" />
+              <Box sx={styles.imageContentContainer}>
+                <StyledTextField
+                  text="Make music together. Online Collaborate with anyone, from anywhere."
+                  type={textFieldVariants.FLOAT_HEADER_MD}
+                />
+              </Box>
             </Box>
           </Box>
         </Box>

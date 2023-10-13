@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar/Avatar";
 import { navItems } from "./config";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   window?: () => Window;
@@ -25,6 +26,16 @@ interface Props {
 const TopNavigation = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const navigate = useNavigate();
+
+  const onClickNavigationButton = (navigation: string, onClick?: () => void) => {
+    return () => {
+      if (onClick) {
+        onClick();
+      }
+      navigate({ pathname: navigation });
+    };
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(prevState => !prevState);
@@ -37,10 +48,10 @@ const TopNavigation = (props: Props) => {
       </Typography>
       <Divider />
       <List>
-        {navItems.map(item => (
-          <ListItem key={item} disablePadding>
+        {navItems.map(({ title, navigation, onClick }) => (
+          <ListItem key={title} disablePadding>
             <ListItemButton sx={styles.textAlign}>
-              <ListItemText primary={item} />
+              <ListItemText primary={title} onClick={onClickNavigationButton(navigation, onClick)} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -69,9 +80,9 @@ const TopNavigation = (props: Props) => {
             MuZi
           </Typography>
           <Box sx={styles.navItem}>
-            {navItems.map(item => (
-              <Button key={item} sx={styles.navBasicItem}>
-                {item}
+            {navItems.map(({ title, navigation, onClick }) => (
+              <Button key={title} sx={styles.navBasicItem} onClick={onClickNavigationButton(navigation, onClick)}>
+                {title}
               </Button>
             ))}
           </Box>
