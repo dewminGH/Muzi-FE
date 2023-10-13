@@ -36,8 +36,7 @@ const Authentication: React.FC = () => {
         pathname: `/authentication/otp/${username}` /* rote as enums  */,
       });
     } else {
-      const { response, error } = await signInUser({ username, password });
-      console.log(response);
+      const { response /* error */ } = await signInUser({ username, password });
       if (response?.response?.AccessToken) {
         const { AccessToken, IdToken, RefreshToken } = response.response;
         setUserAuthentication({ AccessToken, IdToken, RefreshToken });
@@ -45,7 +44,7 @@ const Authentication: React.FC = () => {
           pathname: "/",
         });
       } else {
-        console.log("login error", error);
+        /*  error handle @todo */
       }
     }
   };
