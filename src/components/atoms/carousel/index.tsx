@@ -1,6 +1,7 @@
 /* eslint-disable */
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import * as styles from "./styles";
 import React from "react";
 import Slider from "react-slick";
 import defaultURL from "../../../assets/cover_img2.png";
@@ -14,7 +15,7 @@ const StyledCarousel: React.FC<ICarousel> = ({ cardsList }) => {
   return (
     <Slider {...carouselSettings}>
       {cardsList.map(({ src, content, title }, index) => (
-        <StyledCard content={content} src={src || defaultURL} title={title} key={index} />
+        <StyledCard content={content} src={src || defaultURL} title={title} key={index} styles={styles.card} />
       ))}
     </Slider>
   );

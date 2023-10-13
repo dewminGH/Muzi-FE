@@ -12,6 +12,7 @@ import { signInUser, signUpUser } from "../../services";
 import { userRoles } from "../../services/types/enum";
 import { useNavigate } from "react-router-dom";
 import { setUserAuthentication } from "../../_data/localStorage";
+import { Footer } from "../../_layouts/footer";
 
 const Authentication: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
@@ -61,7 +62,7 @@ const Authentication: React.FC = () => {
           <img src={loginCoverImage} alt="broken" style={styles.logicCoverImage as object} className="coverImage" />
         </Box>
         <Box sx={styles.contentContainer}>
-          <Box sx={{ display: "flex" }}>
+          <Box sx={styles.innerContentContainer}>
             <Avatar src={Logo} alt="broken" sx={styles.avatar} />
             <StyledTextField text={`Sign ${isSignUp ? "up" : "in"} into MuZi`} type={textFieldVariants.HEADER_MD} />
           </Box>
@@ -107,6 +108,7 @@ const Authentication: React.FC = () => {
           </Box>
         </Box>
       </Box>
+      <Footer isDark />
     </Box>
   );
 };

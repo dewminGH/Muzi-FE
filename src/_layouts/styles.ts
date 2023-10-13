@@ -1,7 +1,8 @@
 import { SxProps } from "@mui/material";
-import { colors, fontSize, textDecorationNormal } from "../theme";
+import { colors, fontSize, fontWeight, textDecorationNormal } from "../theme";
 import { drawerWidth } from "./config";
 
+/* top navigation bar */
 export const navContainer: SxProps = {
   width: "100%",
   height: { xs: "20px", md: "30px" },
@@ -78,4 +79,40 @@ export const iconButton: SxProps = {
 
 export const appBar: SxProps = {
   mb: "32px",
+};
+
+/* footer  */
+export const footerContainer: SxProps = {
+  display: "flex",
+  marginX: {
+    xs: "24px",
+    md: "80px",
+  },
+  justifyContent: "space-between",
+  height: "100%",
+  flexDirection: "row",
+};
+
+export const copyWrite: SxProps = {
+  width: "fit-content",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "right",
+};
+
+export const footerTitle: SxProps = {
+  width: "fit-content",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "left",
+  fontWeight: fontWeight.bold,
+};
+
+export const footerOuterContainer: SxProps = {
+  position: "absolute",
+  width: "100vw",
+  height: "65px",
+  bottom: 0,
+  borderTop: `solid 5px ${colors.darkGray}`,
+  color: colors.primary,
 };
