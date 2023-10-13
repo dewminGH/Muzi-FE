@@ -18,3 +18,7 @@ export const setUserSignOut = () => {
   localStorage.removeItem("IdToken");
   localStorage.removeItem("RefreshToken");
 };
+
+export const getAccessToken = () => {
+  return localStorage.getItem("AccessToken");
+};

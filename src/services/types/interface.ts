@@ -33,6 +33,40 @@ export interface IConfirmSignUp {
   code: string;
 }
 
+/* getAllCollaborators */
+export interface ICollaborator {
+  id: string;
+  email: string;
+  f_name: string;
+  l_name: string;
+  date: string;
+  country: string;
+  languages: string[];
+  bio: string;
+  talents: string[];
+  on_board: boolean;
+}
+
+export interface IAllCollaborators {
+  data: {
+    response: {
+      Items: ICollaborator[];
+    };
+  };
+}
+
+/* getRandom */
+export interface IRecommendMeRandomInputItem {
+  id: string;
+  userData: string;
+}
+
+export interface IGetRandomResponse {
+  data: {
+    recommendProfiles: string[];
+  };
+}
+
 /* common */
 
 export interface IError {
@@ -46,4 +80,9 @@ export interface IResponseError {
       error: IError;
     };
   };
+}
+
+export interface IAccessTokenDecode {
+  sub: string;
+  exp: number;
 }

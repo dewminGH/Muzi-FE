@@ -5,6 +5,7 @@ export const outerContainer: SxProps = {
   width: "100vw",
   minHeight: "100vh",
   background: background.secondary,
+  position: "relative",
 };
 
 export const topContainer: SxProps = {
@@ -20,8 +21,8 @@ export const middleContainer: SxProps = {
   height: "fit-content",
   borderBottom: "solid 2px #FFFFFF",
   padding: {
-    xs: "80px 24px",
-    md: "80px",
+    xs: "80px 24px 120px 24px",
+    md: "80px 80px 120px 80px",
   },
 };
 

@@ -50,3 +50,7 @@ export const avatar: SxProps = {
   height: "fit-content",
   marginRight: "24px",
 };
+
+export const innerContentContainer: SxProps = {
+  display: "flex",
+};

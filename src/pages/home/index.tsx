@@ -4,19 +4,45 @@ import Singer from "../../assets/singer.png";
 import { Box } from "@mui/material";
 import { StyledCarousel, StyledTextField } from "../../components";
 import { textFieldVariants } from "../../components/atoms/textField/types/enum";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { validateUserAuthentication } from "../../_data/localStorage";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../../_layouts/footer";
+import { getAllCollaborators, getRandom } from "../../services";
+import { ICollaborator } from "../../services/types/interface";
+import { ICarouselItem } from "../../components/atoms/carousel/types/interface";
 
 const Home: React.FC = () => {
+  const [collaborators, setCollaborators] = useState<ICollaborator[]>([]);
+  const [cardData, setCardData] = useState<ICarouselItem[]>([]);
   const navigate = useNavigate();
 
   /* access control for un-authenticate users */
   useEffect(() => {
     if (!validateUserAuthentication()) {
       navigate({ pathname: "/authentication" });
+    } else if (collaborators.length < 1) {
+      getAllCollaborators().then(({ response /* error */ }) => {
+        if (response?.Items) {
+          setCollaborators(response?.Items);
+        } else {
+          /* error handle here .. */
+        }
+      });
     }
+    // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (collaborators.length > 0) {
+      getRandom(collaborators).then(({ response }) => {
+        if (response && collaborators.length > 0) {
+          setCardData(response);
+        }
+      });
+    }
+    // eslint-disable-next-line
+  }, [collaborators]);
 
   return (
     <Box sx={styles.outerContainer}>
@@ -62,22 +88,9 @@ const Home: React.FC = () => {
         {/*  hard code value for temp */}
         {/*  remove this @todo */}
         <Box sx={styles.cardsContainer}></Box>
-        <StyledCarousel
-          cardsList={[
-            { title: "new", content: "shit" },
-            { title: "new", content: "shit" },
-            { title: "new", content: "shit" },
-            { title: "new", content: "shit" },
-            { title: "new", content: "shit" },
-            { title: "new", content: "shit" },
-            { title: "new", content: "shit" },
-          ]}
-        />
+        <StyledCarousel cardsList={cardData} />
       </Box>
-      {/* promotion page bottom content */}
-      <Box sx={styles.bottomContainer}>
-        <div>------------------BUILDING YOU WEB Neeeeeeeeeed foooter</div>
-      </Box>
+      <Footer isDark={false} />
     </Box>
   );
 };
