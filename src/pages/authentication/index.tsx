@@ -11,6 +11,7 @@ import { useState } from "react";
 import { signInUser, signUpUser } from "../../services";
 import { userRoles } from "../../services/types/enum";
 import { useNavigate } from "react-router-dom";
+import { setUserAuthentication } from "../../_data/localStorage";
 
 const Authentication: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
@@ -34,10 +35,17 @@ const Authentication: React.FC = () => {
         pathname: `/authentication/otp/${username}` /* rote as enums  */,
       });
     } else {
-      await signInUser({ username, password });
-      navigate({
-        pathname: "/",
-      });
+      const { response, error } = await signInUser({ username, password });
+      console.log(response);
+      if (response?.response?.AccessToken) {
+        const { AccessToken, IdToken, RefreshToken } = response.response;
+        setUserAuthentication({ AccessToken, IdToken, RefreshToken });
+        navigate({
+          pathname: "/",
+        });
+      } else {
+        console.log("login error", error);
+      }
     }
   };
 
@@ -54,7 +62,7 @@ const Authentication: React.FC = () => {
         </Box>
         <Box sx={styles.contentContainer}>
           <Box sx={{ display: "flex" }}>
-            <Avatar src={Logo} alt="broken" sx={{ width: 80, height: "fit-content", marginRight: "24px" }} />
+            <Avatar src={Logo} alt="broken" sx={styles.avatar} />
             <StyledTextField text={`Sign ${isSignUp ? "up" : "in"} into MuZi`} type={textFieldVariants.HEADER_MD} />
           </Box>
           <Box sx={styles.buttonsContainer}>

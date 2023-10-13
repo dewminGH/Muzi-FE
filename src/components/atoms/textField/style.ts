@@ -24,6 +24,12 @@ export const floatHeaderMd: SxProps = {
   color: colors.primary,
   display: "flex",
   alignItems: "center",
+
+  textShadow: `
+          -1px 0 ${colors.purple}, 
+          0 3px ${colors.purple}, 
+          1px 0 ${colors.purple}, 
+          0 -1px ${colors.purple}`,
 };
 
 export const basicTextMd: SxProps = {

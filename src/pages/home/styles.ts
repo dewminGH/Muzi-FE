@@ -70,9 +70,6 @@ export const imageContainer: SxProps = {
     md: "600px",
   },
   maxWidth: "800px",
-  marginLeft: {
-    md: "120px",
-  },
   padding: "24px",
   background: "pink",
   borderRadius: borderRadius.sm,
@@ -98,4 +95,10 @@ export const imageContentContainer: SxProps = {
 export const customTextStyle: SxProps = {
   justifyContent: "center",
   textAlign: "center",
+};
+
+export const outerContainerImageBlock: SxProps = {
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
 };

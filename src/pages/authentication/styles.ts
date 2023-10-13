@@ -44,3 +44,9 @@ export const buttonsContainer: SxProps = {
   display: "flex",
   flexDirection: "column",
 };
+
+export const avatar: SxProps = {
+  width: 80,
+  height: "fit-content",
+  marginRight: "24px",
+};
