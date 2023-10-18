@@ -8,27 +8,28 @@ import {
   IRecommendMeRandomInputItem,
   IAccessTokenDecode,
   IGetRandomResponse,
+  ICustomAtr,
 } from "./types/interface";
 import { ICarouselItem } from "../components/atoms/carousel/types/interface";
 
-const getRandom = async (collaboratorsList: ICollaborator[]) => {
+const getRecommends = async (collaboratorsList: ICollaborator[], size: number, customSearch?: ICustomAtr) => {
   /* nlp data */
   let target: string = "";
   const recommendMeInput: IRecommendMeRandomInputItem[] = [];
   /* pre - process data */
-  collaboratorsList.forEach(({ id, bio, country, date, languages, talents }) => {
+  collaboratorsList.forEach(({ id, bio, country, date, languages, talents }, index) => {
     const accessToken = getAccessToken();
     let talentsList = "";
     let languageList = "";
-    talents.forEach(talent => (talentsList += talent));
-    languages.forEach(language => (languageList += language));
+    talents.forEach(talent => (talentsList += `\t ${talent}`));
+    languages.forEach(language => (languageList += `\t ${language}`));
 
     /* get login user id */
     const userData = jwtDecode(accessToken as string);
     const { sub } = userData as IAccessTokenDecode;
-
     /* paper the data formats */
     if (id === sub) {
+      /* apply default target */
       target = bio + country + date + talentsList + languageList;
     } else {
       recommendMeInput.push({
@@ -38,11 +39,23 @@ const getRandom = async (collaboratorsList: ICollaborator[]) => {
     }
   });
   try {
+    /* apply custom search */
+    let customTalents = "";
+    let customCountries = "";
+    customSearch?.talents && customSearch.talents.forEach(talent => (customTalents += `\t ${talent}`));
+    customSearch?.country && customSearch?.country?.forEach(cn => (customCountries += `\t ${cn}`));
+
+    let customTarget = undefined;
+    if (customSearch?.bio || customTalents || customCountries) {
+      customTarget = customTalents + customCountries + customSearch?.bio;
+    }
+
     const {
       data: { recommendProfiles },
     }: IGetRandomResponse = await axios.post("/nlp/recommend-me", {
-      target,
+      target: customTarget ? customTarget : target,
       userList: recommendMeInput,
+      size,
     });
     /*  filtered data */
     const nlpSuggestions: ICarouselItem[] = [];
@@ -67,4 +80,4 @@ const getRandom = async (collaboratorsList: ICollaborator[]) => {
   }
 };
 
-export default getRandom;
+export default getRecommends;

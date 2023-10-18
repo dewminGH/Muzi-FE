@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { validateUserAuthentication } from "../../_data/localStorage";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../_layouts/footer";
-import { getAllCollaborators, getRandom } from "../../services";
+import { getAllCollaborators, getRecommends } from "../../services";
 import { ICollaborator } from "../../services/types/interface";
 import { ICarouselItem } from "../../components/atoms/carousel/types/interface";
 
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (collaborators.length > 0) {
-      getRandom(collaborators).then(({ response }) => {
+      getRecommends(collaborators, 7).then(({ response }) => {
         if (response && collaborators.length > 0) {
           setCardData(response);
         }
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
           type={textFieldVariants.HEADER_SM}
           styles={styles.customTextStyle}
           onClick={() => {
-            /* @todo navigation required */
+            navigate({ pathname: "/client/find-now" });
           }}
         />
 
@@ -90,7 +90,7 @@ const Home: React.FC = () => {
         <Box sx={styles.cardsContainer}></Box>
         <StyledCarousel cardsList={cardData} />
       </Box>
-      <Footer isDark={false} />
+      <Footer isDark />
     </Box>
   );
 };

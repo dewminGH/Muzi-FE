@@ -47,6 +47,13 @@ export interface ICollaborator {
   on_board: boolean;
 }
 
+/* custom search */
+export interface ICustomAtr {
+  bio?: string;
+  talents?: string[];
+  country?: string[];
+}
+
 export interface IAllCollaborators {
   data: {
     response: {
@@ -65,6 +72,11 @@ export interface IGetRandomResponse {
   data: {
     recommendProfiles: string[];
   };
+}
+
+/* getAllCollaborators */
+export interface IGetAllCollaborators {
+  size: number;
 }
 
 /* common */

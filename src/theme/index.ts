@@ -2,6 +2,8 @@ export const width = {
   primaryWidthButton: "430px",
   primaryWidthButtonSm: "340px",
   primaryWidthButtonXs: "calc(100vw - 40px)",
+  searchButtonXs: "calc(100vw - 48px)",
+  searchButtonMd: "360px",
   primaryWidthInput: "430px",
   primaryWidthInputSm: "340px",
   primaryWidthInputXs: "calc(100vw - 40px)",
@@ -10,6 +12,7 @@ export const width = {
 
 export const height = {
   primaryHeightButton: "42px",
+  secondaryHeightButton: "56px",
   primaryHeightInput: "56px",
   shortHeightInput: "56px",
   pageLayoutDivideSm: "400px",
@@ -77,4 +80,14 @@ export const borderRadius = {
 export const borderPrimary = {
   thin: "1px solid #FFFFFF",
   normal: "3px solid #FFFFFF",
+};
+
+export const themeNavBarPadding = {
+  xs: "30px 24px 0 24px",
+  md: "30px 80px 0 80px",
+};
+
+export const themePagePadding = {
+  xs: "80px 24px 120px 24px",
+  md: "80px 80px 120px 80px",
 };

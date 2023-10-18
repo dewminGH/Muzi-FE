@@ -2,6 +2,7 @@ import * as styles from "./styles";
 import TextField from "@mui/material/TextField";
 import { IStyledInput } from "./types/interface";
 import { inputVariants } from "./types/enum";
+import { colors } from "../../../theme";
 
 const StyledInput: React.FC<IStyledInput> = ({
   type,
@@ -10,6 +11,7 @@ const StyledInput: React.FC<IStyledInput> = ({
   value,
   inputRef,
   inputProps,
+  style,
   onKeyDown,
   onClick,
   onChange,
@@ -37,8 +39,9 @@ const StyledInput: React.FC<IStyledInput> = ({
       sx={{
         ...styleSelector(),
         "& input": {
-          color: "#F7F8F8 !important",
+          color: `${colors.primary} !important`,
         },
+        ...style,
       }}
       inputProps={inputProps}
     />

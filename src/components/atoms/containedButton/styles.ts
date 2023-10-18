@@ -7,3 +7,10 @@ export const primaryStyle: SxProps = {
   height: height.primaryHeightButton,
   color: colors.primary,
 };
+
+export const searchStyle: SxProps = {
+  background: background.secondary,
+  width: { xs: width.searchButtonXs, md: width.searchButtonMd },
+  height: height.secondaryHeightButton,
+  color: colors.primary,
+};
