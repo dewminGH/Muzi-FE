@@ -1,10 +1,18 @@
 import { SxProps } from "@mui/material";
-import { background, borderPrimary, borderRadius, gaps, height } from "../../theme";
+import {
+  background,
+  borderPrimary,
+  borderRadius,
+  gaps,
+  height,
+  themeNavBarPadding,
+  themePagePadding,
+} from "../../theme";
 
 export const outerContainer: SxProps = {
   width: "100vw",
   minHeight: "100vh",
-  background: background.secondary,
+  background: background.primary,
   position: "relative",
 };
 
@@ -20,10 +28,7 @@ export const middleContainer: SxProps = {
   width: "100%",
   height: "fit-content",
   borderBottom: "solid 2px #FFFFFF",
-  padding: {
-    xs: "80px 24px 120px 24px",
-    md: "80px 80px 120px 80px",
-  },
+  padding: themePagePadding,
 };
 
 export const bottomContainer: SxProps = {
@@ -37,10 +42,7 @@ export const bottomContainer: SxProps = {
 };
 
 export const navContainer: SxProps = {
-  padding: {
-    xs: "30px 24px 0 24px",
-    md: "30px 80px 0 80px",
-  },
+  padding: themeNavBarPadding,
   position: "relative",
   display: "flex",
   flexDirection: "column",
