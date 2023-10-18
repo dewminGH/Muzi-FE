@@ -8,15 +8,15 @@ export const navItems = [
   },
   {
     title: "About",
-    navigation: "/about",
+    navigation: "/client/about",
   },
   {
     title: "Find Now",
-    navigation: "/find-now",
+    navigation: "/client/find-now",
   },
   {
     title: "Pricing",
-    navigation: "/pricing",
+    navigation: "/client/pricing",
   },
   {
     title: "Log out",

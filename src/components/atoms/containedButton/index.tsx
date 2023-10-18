@@ -8,6 +8,8 @@ const StyledContainedButton: React.FC<IStyledContainedButton> = ({ text, type, o
     switch (type) {
       case containedButtonVariants.PRIMARY:
         return styles.primaryStyle;
+      case containedButtonVariants.SEARCH:
+        return styles.searchStyle;
     }
   };
   return (
