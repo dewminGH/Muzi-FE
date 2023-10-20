@@ -45,7 +45,7 @@ const StyledMultipleSelect: React.FC<IStyledMultipleSelect> = ({
       <FormControl
         sx={{
           width: "100%",
-          minWidth: "300px",
+          minWidth: "200px",
         }}
       >
         <InputLabel id="demo-multiple-checkbox-label">{label}</InputLabel>

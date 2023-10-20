@@ -1,6 +1,10 @@
 import { colors } from "../../../theme";
 
 export const outerContainer = {
+  colors: colors.primary,
+  "& .MuiOutlinedInput-input": {
+    color: colors.darkGray,
+  },
   "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
     borderWidth: "1px",
     borderColor: colors.darkGray,
