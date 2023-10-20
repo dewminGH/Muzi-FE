@@ -83,6 +83,17 @@ export const image: object = {
   height: "300px",
   position: "absolute",
   bottom: "0",
+  zIndex: "4",
+};
+
+export const imageSoundWave: object = {
+  maxHeight: "250px",
+  position: "absolute",
+  bottom: "0",
+  maxWidth: "800px",
+  marginLeft: "-24px",
+  width: "100%",
+  borderRadius: borderRadius.xs,
 };
 
 export const imageContentContainer: SxProps = {
@@ -104,4 +115,12 @@ export const outerContainerImageBlock: SxProps = {
   width: "100%",
   display: "flex",
   justifyContent: "center",
+};
+
+export const loaderContainer: SxProps = {
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  minHeight: "40vh",
 };

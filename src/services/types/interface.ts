@@ -52,6 +52,7 @@ export interface ICustomAtr {
   bio?: string;
   talents?: string[];
   country?: string[];
+  languages?: string[];
 }
 
 export interface IAllCollaborators {
@@ -68,9 +69,14 @@ export interface IRecommendMeRandomInputItem {
   userData: string;
 }
 
+export interface IResponseProfileObject {
+  id: string;
+  score: number;
+}
+
 export interface IGetRandomResponse {
   data: {
-    recommendProfiles: string[];
+    recommendProfiles: IResponseProfileObject[];
   };
 }
 

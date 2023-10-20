@@ -11,7 +11,7 @@ const StyledCard: React.FC<IStyledCard> = ({ src, title, content, styles }) => {
   return (
     <Card sx={{ maxWidth: 345, height: "100%", ...styles }}>
       <CardActionArea sx={{ height: "100%" }}>
-        <CardMedia component="img" height="140" image={src || DEFAULT_URL} alt="broken" sx={{ objectFit: "cover" }} />
+        <CardMedia component="img" height="216px" image={src || DEFAULT_URL} alt="broken" sx={{ objectFit: "cover" }} />
         <CardContent sx={{ height: { xs: "300px", sm: "240px", md: "200px" } }}>
           <Typography gutterBottom variant="h5" component="div">
             {title}
