@@ -8,7 +8,7 @@ export const navItems = [
   },
   {
     title: "About",
-    navigation: "/client/about",
+    navigation: "/client/about/We are the best music collaborating platform",
   },
   {
     title: "Find Now",
@@ -16,7 +16,7 @@ export const navItems = [
   },
   {
     title: "Pricing",
-    navigation: "/client/pricing",
+    navigation: "/client/pricing/You are using free tire",
   },
   {
     title: "Log out",

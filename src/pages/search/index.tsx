@@ -1,5 +1,5 @@
 import * as styles from "./styles";
-import SearchCover from "../../assets/landing/search.svg";
+import SearchCover from "../../assets/search.svg";
 import TopNavigation from "../../_layouts/topNav";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllCollaborators, getRecommends } from "../../services";
 import { ICollaborator } from "../../services/types/interface";
 import { IStyledCard } from "../../components/molecules/card/types/interface";
-import { optionConfig } from "./config";
+import { optionConfigCountry, optionConfigLanguages, optionConfigTalents } from "./config";
 import { containedButtonVariants } from "../../components/atoms/containedButton/types/enum";
 
 const Search: React.FC = () => {
@@ -27,13 +27,20 @@ const Search: React.FC = () => {
   const [caption, setCaption] = useState<string>("");
   const [selectedTalents, setSelectedTalents] = useState<string[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<string[]>([]);
+  const [selectedLanguage, setSelectedLanguage] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
-  const getNlpRecommends = (size: number, bio?: string, country?: string[], talents?: string[]) => {
+  const getNlpRecommends = (
+    size: number,
+    bio?: string,
+    country?: string[],
+    talents?: string[],
+    languages?: string[],
+  ) => {
     setIsLoading(true);
-    getRecommends(collaborators, size, { bio, country, talents }).then(({ response }) => {
+    getRecommends(collaborators, size, { bio, country, talents, languages }).then(({ response }) => {
       if (response && collaborators.length > 0) {
         setCardList(response);
       }
@@ -67,7 +74,7 @@ const Search: React.FC = () => {
   }, [collaborators]);
 
   const handleOnClickSearch = () => {
-    getNlpRecommends(8, caption, selectedCountry, selectedTalents);
+    getNlpRecommends(8, caption, selectedCountry, selectedTalents, selectedLanguage);
   };
 
   return (
@@ -116,7 +123,6 @@ const Search: React.FC = () => {
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
-            background: "red",
             minHeight: "fit-content",
             width: "100vw",
             bottom: "0",
@@ -128,7 +134,7 @@ const Search: React.FC = () => {
           <Box sx={{ display: "flex", gap: gaps.large, flexDirection: { xs: "column", md: "row" } }}>
             <StyledMultipleSelect
               label="Talents"
-              optionsList={optionConfig}
+              optionsList={optionConfigTalents}
               selectedOptions={setSelectedTalents}
               styles={{
                 mb: "12px",
@@ -136,8 +142,16 @@ const Search: React.FC = () => {
             />
             <StyledMultipleSelect
               label="Country"
-              optionsList={optionConfig}
+              optionsList={optionConfigCountry}
               selectedOptions={setSelectedCountry}
+              styles={{
+                mb: "12px",
+              }}
+            />
+            <StyledMultipleSelect
+              label="Language"
+              optionsList={optionConfigLanguages}
+              selectedOptions={setSelectedLanguage}
               styles={{
                 mb: "12px",
               }}
